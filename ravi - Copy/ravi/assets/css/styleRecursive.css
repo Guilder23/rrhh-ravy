@@ -1,0 +1,166 @@
+.verde{
+    background: #7fbc03;
+    border-color: #7fbc03;  
+    transition: background 0.3s ease, color 0.3s ease;
+}
+.verde:hover{
+     background: rgb(163, 226, 38);
+     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/*Usado para las tablas solas Area, Cargo, Sección*/
+.containerTable{
+     padding:0 20px;
+     padding-top:10px;
+     overflow-x:auto;
+}
+ .containerTable table{
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+.bordeOrdenado{
+    padding:10px 20px;
+}
+
+
+  /*Estilo para el panel de los buscadoresy filtros*/
+     .containerOptions{
+      display:flex;
+      justify-content:center;
+      align-items:center
+      color:white;
+      background:#333;
+      padding:10px 0;
+      gap:30px;
+    }
+    .titulogestion{
+       margin:0;  
+       background: rgb(163, 226, 38);
+       padding-left:10px;
+    }
+
+  /*Estilo de los inputs buscadores*/
+    .inputArea{
+      position: relative;
+      display:flex;
+      align-items:center;
+      gap:5px;
+      width:auto;
+      color:white;
+    }
+    .inputArea input, .inputArea select{
+      width:140px;
+    }
+
+  /*Estilo de los botones que se encuentran en el area del buscador*/
+    .btnOption2{
+      background:#cdcdcd;
+      border:none;
+      padding:10px;
+      border-radius:5px;
+      transition: transform 0.3s ease;
+    }
+    .btnOption2:hover{
+      background: rgb(163, 226, 38);
+      color:white;
+      transform: scale(1.04);
+    }
+
+  /*Estilo de la flecha circular de actualizacion*/
+    .refresh-icon {
+        font-size: 24px;
+        cursor: pointer;
+        transition: transform 0.3s ease, color 0.3s ease;
+        padding:5px;
+        border-radius:50%;
+    }
+    
+    .refresh-icon:hover {
+        transform: rotate(90deg);
+        background-color: #555;
+    }
+    
+    @media (max-width: 768px) {
+        .containerOptions{
+         display:flex;
+          flex-wrap:wrap;
+          gap:10px;
+        }
+    }
+    
+    
+    
+    
+
+
+
+
+
+/*Estilo de los formularios*/
+ .separar{
+     display:flex;
+     flex-wrap:wrap;
+ }
+ .mitad{
+     width:46%;
+     margin:2%;
+     box-sizing: border-box;
+     overflow-y:auto;
+ }
+ 
+ .mitad, .elementoForm, .elementoForm input, .elementoForm select{
+    box-sizing: border-box;
+ }
+ .elementoForm{
+   display:flex;
+   align-items:center;
+   margin:3px 0;
+   justify-content:space-between;
+   padding: 0px 10px;
+ }
+  .elementoForm input, .elementoForm select{
+      font-size:1rem;
+      padding:5px;
+      width:170px;
+  }
+  .labelForm{
+      font-size:0.9rem;
+      display:flex;
+      justify-content:center;
+  }
+  .containerBtns{
+      padding-top:20px;
+  }
+  
+    @media (max-width: 768px) {
+       .separar{
+          flex-direction:column;
+          justify-content:center;
+       }
+       .mitad{
+           width:100%;
+       }
+       .elementoForm{
+          margin:auto;  
+       }
+  }
+  
+  
+  
+  
+
+
+
+
+/* Estilos para tabletas */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .elementoForm input, .elementoForm select{
+     width:150px;
+   }
+}
+
+
+  
+  
+  
