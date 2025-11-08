@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 require '../../config/database.php';
 
-$database = new Database();
+$database = new Database('local');
 $conn = $database->getConnection();
 
 try {

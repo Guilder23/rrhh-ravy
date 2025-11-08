@@ -59,6 +59,7 @@ if (isset($_SESSION['message'])) {
 <?php include 'modals/users/addUserModal.php'; ?>
 <?php include 'modals/users/deleteUserModal.php'; ?>
 <?php include 'modals/users/editUserModal.php'; ?>
+<?php include 'modals/users/addUserType.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="../assets/js/scriptRecursive.js"></script>
@@ -123,15 +124,26 @@ let paginaActual = 1;
             .catch(error => console.error('Error al cargar usuarios:', error));
     }
     let eliminaModal = document.getElementById('deleteUserModal');
-    eliminaModal.addEventListener('show.bs.modal', event => {
-        let button = event.relatedTarget;
-        let codeuser = button.getAttribute('data-bs-id');
-        eliminaModal.querySelector('.modal-footer #codeuser').value = codeuser;
-    });
-    
-    eliminaModal.addEventListener('hidden.bs.modal', () => {
-        eliminaModal.querySelector('.modal-footer #codeuser').value = '';
-    });
+    if (eliminaModal) {
+        eliminaModal.addEventListener('show.bs.modal', event => {
+            let button = event.relatedTarget;
+            let codeuser = button.getAttribute('data-bs-id');
+            let codeuserInput = eliminaModal.querySelector('input[name="codeuser"]');
+            if (codeuserInput && codeuser) {
+                codeuserInput.value = codeuser;
+                console.log('Codeuser establecido:', codeuser);
+            } else {
+                console.error('No se pudo establecer codeuser. Input:', codeuserInput, 'Codeuser:', codeuser);
+            }
+        });
+        
+        eliminaModal.addEventListener('hidden.bs.modal', () => {
+            let codeuserInput = eliminaModal.querySelector('input[name="codeuser"]');
+            if (codeuserInput) {
+                codeuserInput.value = '';
+            }
+        });
+    }
     
     setTimeout(function() {
         var message = document.querySelector('.message');
@@ -140,10 +152,7 @@ let paginaActual = 1;
         }
     }, 5000); // 5000 ms = 5 segundos
     
-    let editarModal = document.getElementById('editUserModal');
-    
-
- document.addEventListener('DOMContentLoaded', () => cargarUsuarios(paginaActual));
+    document.addEventListener('DOMContentLoaded', () => cargarUsuarios(paginaActual));
 </script>
 
 <style>

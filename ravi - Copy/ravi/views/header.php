@@ -1,17 +1,6 @@
 <?php
 include($_SERVER['DOCUMENT_ROOT'] . '/config/sessionController.php');
-
-if (isset($_SESSION['message'])) {
-    $message = $_SESSION['message'];
-    $message_type = $_SESSION['message_type'];
-    
-    echo "<div class='message $message_type notification verde'>$message</div>";
-    
-    unset($_SESSION['message']);
-    unset($_SESSION['message_type']);
-}
 ?>
-
 
 <!DOCTYPE html>
 <html lang="es">
@@ -30,6 +19,18 @@ if (isset($_SESSION['message'])) {
 </head>
 
 <body>
+
+<?php
+if (isset($_SESSION['message'])) {
+    $message = $_SESSION['message'];
+    $message_type = $_SESSION['message_type'];
+    
+    echo "<div class='message $message_type notification verde'>$message</div>";
+    
+    unset($_SESSION['message']);
+    unset($_SESSION['message_type']);
+}
+?>
 
 <div class="containerCabeceraUp">
 <section class="cabeceraUp">
@@ -51,7 +52,7 @@ if (isset($_SESSION['message'])) {
 
 <style>
 .notification {
-    position: absolute;
+    position: fixed;
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
@@ -64,7 +65,8 @@ if (isset($_SESSION['message'])) {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     text-align: center;
     animation: slide-up 0.5s ease, fade-out 7.5s ease 1.5s forwards;
-    z-index: 1000; 
+    z-index: 9999; 
+    pointer-events: none;
 }
 /* Animación para que aparezca desde abajo */
 @keyframes slide-up {
@@ -96,10 +98,12 @@ html, body {
 .containerCabeceraUp{
     position:relative;
    padding-bottom:35px;
-   z-index:1;
+   z-index:100;
 }
 .cabeceraUp{
     position:fixed;
+    top:0;
+    left:0;
     width:100%;
     display:flex; 
     background: rgb(163, 226, 38);
@@ -107,6 +111,8 @@ html, body {
     padding:2px 15px;
     align-items:center;
     margin-bottom:5px;
+    z-index:1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .nameUserbtnCerrar{
